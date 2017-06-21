@@ -10,9 +10,10 @@
 
 @interface SecondViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *TrailLengthTextBox;
-@property (weak, nonatomic) IBOutlet UIButton *UpdateTrailLengthButton;
-@property (weak, nonatomic) IBOutlet UIButton *ClearDrawingsButton;
+@property (strong, nonatomic) IBOutlet UITextField *TrailLengthTextBox;
+@property (strong, nonatomic) IBOutlet UIButton *UpdateTrailLengthButton;
+@property (strong, nonatomic) IBOutlet UIButton *ClearDrawingsButton;
+@property (strong, nonatomic) IBOutlet UIButton *SaveDrawingButton;
 
 @end
 
@@ -38,6 +39,11 @@
 
 - (IBAction)ClearDrawingsHandle:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ClearDrawingsHandle"
+                                                        object:self];
+}
+
+- (IBAction)SaveDrawingButtonHandle:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveDrawingButtonHandle"
                                                         object:self];
 }
 

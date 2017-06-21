@@ -72,4 +72,40 @@
         [self setNeedsDisplay];
 }
 
+- (void)loadDrawingData{
+    if(_drawPointsArray.count > 0){
+        _drawPointsArray = [[NSMutableArray alloc] init];
+    }
+    NSString *path = [self getSavePath];
+    NSMutableArray *undeserialized = [[NSMutableArray alloc] init];
+    undeserialized = [NSMutableArray arrayWithContentsOfFile:path];
+    for(int i = 0; i < undeserialized.count; i++){
+        [_drawPointsArray addObject:[NSValue valueWithCGPoint:CGPointFromString(undeserialized[i])]];
+    }
+    [self refresh];
+}
+
+- (NSString *)getSavePath{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *path = [documentDirectory stringByAppendingPathComponent:@"appDatas"];
+    return path;
+}
+
+- (void)saveDrawingData{
+    NSString *path = [self getSavePath];
+    NSMutableArray *forSerializing = [[NSMutableArray alloc] init];
+    
+    for(int i = 0; i < _drawPointsArray.count; i++){
+        NSValue *pt = _drawPointsArray[i];
+        [forSerializing addObject: NSStringFromCGPoint(pt.CGPointValue)];
+    }
+    [forSerializing writeToFile:path atomically:YES];
+}
+
+- (bool)savedDataAvailable{
+    NSString *path = [self getSavePath];
+    return [[NSFileManager defaultManager] fileExistsAtPath:path];
+}
+
 @end

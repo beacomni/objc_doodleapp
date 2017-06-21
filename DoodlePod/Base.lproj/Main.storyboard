@@ -72,11 +72,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nJd-lh-QGh">
-                                <rect key="frame" x="40" y="90" width="126" height="30"/>
+                                <rect key="frame" x="41" y="90" width="125" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="UpdateTrail length"/>
+                                <state key="normal" title="update trail length"/>
                                 <connections>
                                     <action selector="UpdateTrailLengthHandle:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="cGL-do-Qfq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtT-5C-zK1">
+                                <rect key="frame" x="41" y="156" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="save drawing"/>
+                                <connections>
+                                    <action selector="SaveDrawingButtonHandle:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="oix-0F-GMF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -85,6 +93,7 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="ClearDrawingsButton" destination="sTp-mb-H8L" id="DP9-Y5-TJi"/>
+                        <outlet property="SaveDrawingButton" destination="KtT-5C-zK1" id="wGe-5I-Tai"/>
                         <outlet property="TrailLengthTextBox" destination="A5B-ba-f1Y" id="cEs-1o-KyQ"/>
                         <outlet property="UpdateTrailLengthButton" destination="nJd-lh-QGh" id="8oL-g7-e4m"/>
                     </connections>

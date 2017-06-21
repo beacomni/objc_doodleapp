@@ -12,6 +12,9 @@
 - (void)initializeSubView;
 - (void)clearDrawPoints;
 - (void)refresh;
+- (void)saveDrawingData;
+- (void)loadDrawingData;
+- (bool)savedDataAvailable;
 @property NSMutableArray *drawPointsArray;
 @property long trailLength;
 @end
