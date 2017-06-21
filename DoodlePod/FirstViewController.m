@@ -33,6 +33,10 @@
                                              selector:@selector(handleSaveButton:)
                                                  name:@"SaveDrawingButtonHandle"
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleSaveSettings:)
+                                                 name:@"SaveSettingsHandle"
+                                               object:nil];
     if ([_DrawSubViewOutlet savedDataAvailable]){
         [_DrawSubViewOutlet loadDrawingData];
     }
@@ -49,13 +53,18 @@
 
 -(void)handleLengthChange:(NSNotification *)notification {
         NSNumber *doodleLengthAsNSNumber = [notification object];
-        [_DrawSubViewOutlet setTrailLength:[doodleLengthAsNSNumber longValue]];
+        [_DrawSubViewOutlet updateTrailLengthWith:[doodleLengthAsNSNumber longValue]];
         [_DrawSubViewOutlet refresh];
     }
 
 - (void)handleSaveButton:(NSNotification *)notification {
     [_DrawSubViewOutlet saveDrawingData];
 }
+
+- (void)handleSaveSettings:(NSNotification *)notification {
+    [_DrawSubViewOutlet saveTrailLengthSetting];
+}
+
 
 @end
 

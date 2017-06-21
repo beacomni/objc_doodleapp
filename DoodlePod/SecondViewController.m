@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *UpdateTrailLengthButton;
 @property (strong, nonatomic) IBOutlet UIButton *ClearDrawingsButton;
 @property (strong, nonatomic) IBOutlet UIButton *SaveDrawingButton;
+@property (strong, nonatomic) IBOutlet UIButton *SaveSettingsButton;
 
 @end
 
@@ -45,6 +46,10 @@
 - (IBAction)SaveDrawingButtonHandle:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveDrawingButtonHandle"
                                                         object:self];
+}
+- (IBAction)SaveSettingsHandle:(id)sender {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveSettingsHandle"
+                                                             object:self];
 }
 
 @end

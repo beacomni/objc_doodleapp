@@ -23,6 +23,10 @@
 - (void)initializeSubView{
             _drawPointsArray = [[NSMutableArray alloc] init];
     _trailLength = 100;
+    _trailLengthKey = @"trailLengthSetting";
+    if([self hasTrailLengthSetting]){
+        [self loadTrailLengthSetting];
+    }
 }
 
 // Only override drawRect: if you perform custom drawing.
@@ -52,10 +56,15 @@
 - (void) touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     CGPoint touch = [[touches anyObject] locationInView:self];
-    [_drawPointsArray addObject:[NSValue valueWithCGPoint:touch]];
     if(_drawPointsArray.count > _trailLength){
         [_drawPointsArray removeObjectAtIndex:0];
+        [_drawPointsArray removeObjectAtIndex:0];
     }
+    if(_drawPointsArray.count == _trailLength)
+    {
+        [_drawPointsArray removeObjectAtIndex:0];
+    }
+    [_drawPointsArray addObject:[NSValue valueWithCGPoint:touch]];
     [self setNeedsDisplay];
 }
 
@@ -66,6 +75,8 @@
 
 - (void)updateTrailLengthWith:(long)len{
     _trailLength = len;
+    [self saveTrailLengthSetting];
+    [self refresh];
 }
 
 - (void)refresh{
@@ -106,6 +117,26 @@
 - (bool)savedDataAvailable{
     NSString *path = [self getSavePath];
     return [[NSFileManager defaultManager] fileExistsAtPath:path];
+}
+
+- (void)saveTrailLengthSetting{
+    //NSString *trailLengthSetting = [[NSNumber numberWithLong:_trailLength] stringValue];
+    //[[NSUserDefaults standardUserDefaults] setObject:trailLengthSetting forKey:_trailLengthKey];
+    [[NSUserDefaults standardUserDefaults] setInteger:_trailLength forKey:_trailLengthKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)loadTrailLengthSetting{
+    //NSString *trailLenthSetting = [[NSUserDefaults standardUserDefaults]
+                            //stringForKey:_trailLengthKey];
+    //_trailLength = [trailLenthSetting intValue];
+    _trailLength = [[NSUserDefaults standardUserDefaults] integerForKey:_trailLengthKey];
+}
+
+- (bool)hasTrailLengthSetting{
+    NSObject *isItNil = [[NSUserDefaults standardUserDefaults] objectForKey:_trailLengthKey];
+    if(isItNil == nil) return false;
+    return true;
 }
 
 @end
