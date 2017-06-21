@@ -10,6 +10,10 @@
 
 @interface SecondViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *TrailLengthTextBox;
+@property (weak, nonatomic) IBOutlet UIButton *UpdateTrailLengthButton;
+@property (weak, nonatomic) IBOutlet UIButton *ClearDrawingsButton;
+
 @end
 
 @implementation SecondViewController
@@ -25,5 +29,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)UpdateTrailLengthHandle:(id)sender {
+    long trailLength = [_TrailLengthTextBox.text integerValue];
+    NSNumber *leng = [NSNumber numberWithLong:trailLength];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateTrailLengthHandle"
+                                                        object: leng];
+}
+
+- (IBAction)ClearDrawingsHandle:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ClearDrawingsHandle"
+                                                        object:self];
+}
 
 @end

@@ -16,6 +16,7 @@
 		7B77B6BC1EFADC7800A206F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B77B6BA1EFADC7800A206F6 /* LaunchScreen.storyboard */; };
 		7B77B6C71EFADC7800A206F6 /* DoodlePodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6C61EFADC7800A206F6 /* DoodlePodTests.m */; };
 		7B77B6D21EFADC7800A206F6 /* DoodlePodUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6D11EFADC7800A206F6 /* DoodlePodUITests.m */; };
+		7B77B6E11EFADC9E00A206F6 /* DrawSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6E01EFADC9E00A206F6 /* DrawSubView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		7B77B6CD1EFADC7800A206F6 /* DoodlePodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoodlePodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B77B6D11EFADC7800A206F6 /* DoodlePodUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoodlePodUITests.m; sourceTree = "<group>"; };
 		7B77B6D31EFADC7800A206F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B77B6DF1EFADC9E00A206F6 /* DrawSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawSubView.h; sourceTree = "<group>"; };
+		7B77B6E01EFADC9E00A206F6 /* DrawSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawSubView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,8 @@
 				7B77B6AD1EFADC7800A206F6 /* AppDelegate.m */,
 				7B77B6AF1EFADC7800A206F6 /* FirstViewController.h */,
 				7B77B6B01EFADC7800A206F6 /* FirstViewController.m */,
+				7B77B6DF1EFADC9E00A206F6 /* DrawSubView.h */,
+				7B77B6E01EFADC9E00A206F6 /* DrawSubView.m */,
 				7B77B6B21EFADC7800A206F6 /* SecondViewController.h */,
 				7B77B6B31EFADC7800A206F6 /* SecondViewController.m */,
 				7B77B6B51EFADC7800A206F6 /* Main.storyboard */,
@@ -280,6 +285,7 @@
 			files = (
 				7B77B6B41EFADC7800A206F6 /* SecondViewController.m in Sources */,
 				7B77B6AE1EFADC7800A206F6 /* AppDelegate.m in Sources */,
+				7B77B6E11EFADC9E00A206F6 /* DrawSubView.m in Sources */,
 				7B77B6B11EFADC7800A206F6 /* FirstViewController.m in Sources */,
 				7B77B6AB1EFADC7800A206F6 /* main.m in Sources */,
 			);
