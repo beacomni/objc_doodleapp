@@ -12,26 +12,48 @@
 
 //not called when used by view in storyboard
 /*- (id)initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
-    if(self){
-        _drawPointsArray = [[NSMutableArray alloc] init];
-    }
-    
-    return self;
-}*/
+ self = [super initWithFrame:frame];
+ if(self){
+ _drawPointsArray = [[NSMutableArray alloc] init];
+ }
+ 
+ return self;
+ }*/
 
 - (void)initializeSubView{
-            _drawPointsArray = [[NSMutableArray alloc] init];
+    _drawPointsArray = [[NSMutableArray alloc] init];
     _trailLength = 100;
     _trailLengthKey = @"trailLengthSetting";
     if([self hasTrailLengthSetting]){
         [self loadTrailLengthSetting];
     }
-    _taskTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(toggleDotSize) userInfo:nil repeats:YES];
+
+    //_taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateDotLightCounter) userInfo:nil repeats:YES];
+    //_taskTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(dotMove) userInfo:nil repeats:YES];
     _pointWidth = 3;
     _pointHeight = 3;
+    _isBlinkOn = false;
 }
 
+- (void) toggleBlink{
+    if(_isBlinkOn){
+        [self setBlinkOff];
+        _isBlinkOn = false;
+        return;
+    }
+    [self setBlinkOn];
+    _isBlinkOn = true;
+}
+
+- (void)setBlinkOn{
+        _blinkTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(toggleDotSize) userInfo:nil repeats:YES];
+}
+
+- (void)setBlinkOff{
+    _pointHeight = 3;
+    _pointWidth = 3;
+    [_blinkTimer invalidate];
+}
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -43,21 +65,27 @@
     CGContextSetLineWidth(contextRef, 3);
     
     /*
-    CGContextBeginPath(contextRef);
-    CGContextMoveToPoint(contextRef, 155, 155);
-    CGContextAddLineToPoint(contextRef, 290, 190);
-    CGContextDrawPath(contextRef, kCGPathStroke);
+     CGContextBeginPath(contextRef);
+     CGContextMoveToPoint(contextRef, 155, 155);
+     CGContextAddLineToPoint(contextRef, 290, 190);
+     CGContextDrawPath(contextRef, kCGPathStroke);
      */
     
     CGContextSetRGBFillColor(contextRef, 0.02, 0.88, 0.48, 1);
     
     //CGContextStrokeRect(contextRef, CGRectMake(50, 350, 100, 50));
     for(int i = 0;  i < _drawPointsArray.count; i++){
-        CGPoint point = [[_drawPointsArray objectAtIndex:i] CGPointValue];
-        CGContextFillEllipseInRect(contextRef, CGRectMake(point.x - 2, point.y-2, _pointWidth, _pointHeight));
+        if(i == _dotLightCounter)
+        {
+            CGPoint point = [[_drawPointsArray objectAtIndex:i] CGPointValue];
+            CGContextFillEllipseInRect(contextRef, CGRectMake(point.x - 2, point.y-2, _pointWidth + 4, _pointHeight + 4));
+        }
+        else{
+            CGPoint point = [[_drawPointsArray objectAtIndex:i] CGPointValue];
+            CGContextFillEllipseInRect(contextRef, CGRectMake(point.x - 2, point.y-2, _pointWidth, _pointHeight));
+        }
     };
 }
-
 
 
 - (void) touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -84,7 +112,15 @@
     }
     _pointWidth = 6;
     _pointHeight = 6;
+}
 
+
+- (void) updateDotLightCounter{
+    if(_dotLightCounter == 0){
+        _dotLightCounter = _drawPointsArray.count - 1;
+        return;
+    }
+    _dotLightCounter--;
 }
 
 - (void)clearDrawPoints{
@@ -99,7 +135,7 @@
 }
 
 - (void)refresh{
-        [self setNeedsDisplay];
+    [self setNeedsDisplay];
 }
 
 - (void)loadDrawingData{
@@ -147,7 +183,7 @@
 
 - (void)loadTrailLengthSetting{
     //NSString *trailLenthSetting = [[NSUserDefaults standardUserDefaults]
-                            //stringForKey:_trailLengthKey];
+    //stringForKey:_trailLengthKey];
     //_trailLength = [trailLenthSetting intValue];
     _trailLength = [[NSUserDefaults standardUserDefaults] integerForKey:_trailLengthKey];
 }

@@ -20,13 +20,17 @@
 - (bool)savedDataAvailable;
 - (void)updateTrailLengthWith:(long)val;
 - (void) selectPhoto;
+- (void) toggleBlink;
 
 @property int pointWidth;
 @property int pointHeight;
+@property int dotLightCounter;
 
 @property NSMutableArray *drawPointsArray;
 @property long trailLength;
 @property NSString *trailLengthKey;
-@property NSTimer *taskTimer;
+@property NSTimer *blinkTimer;
+
+@property bool isBlinkOn;
 
 @end

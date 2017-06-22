@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *SaveDrawingButton;
 @property (strong, nonatomic) IBOutlet UIButton *SaveSettingsButton;
 @property (strong, nonatomic) IBOutlet UIButton *SetBackgroundPhotoButton;
+@property (strong, nonatomic) IBOutlet UISwitch *TurnBlinkOnSwitch;
 
 @end
 
@@ -86,6 +87,10 @@
                                                         object:self];
 }
 
+- (IBAction)BlinkSwitchHandler:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ToggleBlink"
+                                                        object:self];
+}
 
 
 

@@ -106,6 +106,20 @@
                                     <action selector="SetBackgroundPhotoButtonHandle:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="ra4-DL-0OR"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="DCO-Gj-w18">
+                                <rect key="frame" x="39" y="312" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="BlinkSwitchHandler:" destination="8rJ-Kc-sve" eventType="valueChanged" id="Rkb-Fp-9cI"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="blinking dots" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLw-JK-tVm">
+                                <rect key="frame" x="139" y="314" width="162" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -116,6 +130,7 @@
                         <outlet property="SaveSettingsButton" destination="qhX-yf-Awk" id="y3D-PF-HJN"/>
                         <outlet property="SetBackgroundPhotoButton" destination="vjh-qo-yZV" id="Pgk-FS-l7H"/>
                         <outlet property="TrailLengthTextBox" destination="A5B-ba-f1Y" id="cEs-1o-KyQ"/>
+                        <outlet property="TurnBlinkOnSwitch" destination="DCO-Gj-w18" id="gs0-iV-xIL"/>
                         <outlet property="UpdateTrailLengthButton" destination="nJd-lh-QGh" id="8oL-g7-e4m"/>
                     </connections>
                 </viewController>

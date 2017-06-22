@@ -11,6 +11,8 @@
 @interface FirstViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *DrawingViewImageView;
 @property (strong, nonatomic) IBOutlet DrawSubView *DrawSubViewOutlet;
+
+
 @end
 
 @implementation FirstViewController
@@ -41,7 +43,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(handlePhotoPick:)name:@"SetBackgroundPhotoButtonHandle"
                                                object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleToggleBlink:)
+                                                 name:@"ToggleBlink"
+                                               object:nil];
     
     if ([_DrawSubViewOutlet savedDataAvailable]){
         [_DrawSubViewOutlet loadDrawingData];
@@ -74,6 +79,11 @@
 - (void)handlePhotoPick:(NSNotification *)notification {
     [self selectPhoto];
 }
+
+- (void)handleToggleBlink:(NSNotification *)notification {
+    [_DrawSubViewOutlet toggleBlink];
+}
+     
 
 - (void) selectPhoto {
     dispatch_async(dispatch_get_main_queue(), ^{
