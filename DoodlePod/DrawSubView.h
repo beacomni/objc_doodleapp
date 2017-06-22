@@ -21,8 +21,12 @@
 - (void)updateTrailLengthWith:(long)val;
 - (void) selectPhoto;
 
+@property int pointWidth;
+@property int pointHeight;
+
 @property NSMutableArray *drawPointsArray;
 @property long trailLength;
 @property NSString *trailLengthKey;
+@property NSTimer *taskTimer;
 
 @end

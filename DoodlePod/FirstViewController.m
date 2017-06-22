@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _DrawSubViewOutlet.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.9];
+    _DrawSubViewOutlet.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.5];
     [_DrawSubViewOutlet initializeSubView];
     
     //[[self tabBarController] viewControllers]

@@ -27,7 +27,11 @@
     if([self hasTrailLengthSetting]){
         [self loadTrailLengthSetting];
     }
+    _taskTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(toggleDotSize) userInfo:nil repeats:YES];
+    _pointWidth = 3;
+    _pointHeight = 3;
 }
+
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -36,22 +40,25 @@
     CGContextSetAllowsAntialiasing(contextRef, true);
     
     CGContextSetRGBStrokeColor(contextRef,0.03, 0.90, 0.50, 1);
-    CGContextSetLineWidth(contextRef, 0.8);
+    CGContextSetLineWidth(contextRef, 3);
     
+    /*
     CGContextBeginPath(contextRef);
     CGContextMoveToPoint(contextRef, 155, 155);
     CGContextAddLineToPoint(contextRef, 290, 190);
     CGContextDrawPath(contextRef, kCGPathStroke);
+     */
     
-    CGContextSetRGBFillColor(contextRef, 0.02, 0.88, 0.48, .5);
+    CGContextSetRGBFillColor(contextRef, 0.02, 0.88, 0.48, 1);
     
-    CGContextStrokeRect(contextRef, CGRectMake(50, 350, 100, 50));
-    
+    //CGContextStrokeRect(contextRef, CGRectMake(50, 350, 100, 50));
     for(int i = 0;  i < _drawPointsArray.count; i++){
         CGPoint point = [[_drawPointsArray objectAtIndex:i] CGPointValue];
-        CGContextFillEllipseInRect(contextRef, CGRectMake(point.x - 2, point.y-2, 3, 3));
-    }
+        CGContextFillEllipseInRect(contextRef, CGRectMake(point.x - 2, point.y-2, _pointWidth, _pointHeight));
+    };
 }
+
+
 
 - (void) touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
@@ -66,6 +73,18 @@
     }
     [_drawPointsArray addObject:[NSValue valueWithCGPoint:touch]];
     [self setNeedsDisplay];
+}
+
+- (void) toggleDotSize{
+    if(_pointHeight == 6)
+    {
+        _pointHeight = 3;
+        _pointWidth = 3;
+        return;
+    }
+    _pointWidth = 6;
+    _pointHeight = 6;
+
 }
 
 - (void)clearDrawPoints{
@@ -138,7 +157,6 @@
     if(isItNil == nil) return false;
     return true;
 }
-
 
 
 @end
