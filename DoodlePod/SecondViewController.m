@@ -39,17 +39,45 @@
 }
 
 - (IBAction)ClearDrawingsHandle:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ClearDrawingsHandle"
-                                                        object:self];
+    [self userPromptForClear];
 }
 
 - (IBAction)SaveDrawingButtonHandle:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveDrawingButtonHandle"
                                                         object:self];
 }
+
 - (IBAction)SaveSettingsHandle:(id)sender {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveSettingsHandle"
                                                              object:self];
+}
+
+- (void)userPromptForClear{
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:@"Clear Drawings" message:@"Are you sure you want to clear drawings?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        [self signalCleared];
+                                         [alert dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void) signalCleared{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ClearDrawingsHandle"
+                                                        object:self];
 }
 
 @end
