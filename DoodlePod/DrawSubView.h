@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DrawSubView : UIView
+
+@interface DrawSubView : UIView 
+
 - (void)initializeSubView;
 - (void)clearDrawPoints;
 - (void)refresh;
@@ -17,7 +19,10 @@
 - (void)saveTrailLengthSetting;
 - (bool)savedDataAvailable;
 - (void)updateTrailLengthWith:(long)val;
+- (void) selectPhoto;
+
 @property NSMutableArray *drawPointsArray;
 @property long trailLength;
 @property NSString *trailLengthKey;
+
 @end

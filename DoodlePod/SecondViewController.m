@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *ClearDrawingsButton;
 @property (strong, nonatomic) IBOutlet UIButton *SaveDrawingButton;
 @property (strong, nonatomic) IBOutlet UIButton *SaveSettingsButton;
+@property (strong, nonatomic) IBOutlet UIButton *SetBackgroundPhotoButton;
 
 @end
 
@@ -48,8 +49,8 @@
 }
 
 - (IBAction)SaveSettingsHandle:(id)sender {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveSettingsHandle"
-                                                             object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SaveSettingsHandle"
+                                                        object:self];
 }
 
 - (void)userPromptForClear{
@@ -58,7 +59,7 @@
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         [self signalCleared];
-                                         [alert dismissViewControllerAnimated:YES completion:nil];
+        [alert dismissViewControllerAnimated:YES completion:nil];
     }];
     
     UIAlertAction *cancel = [UIAlertAction
@@ -79,5 +80,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ClearDrawingsHandle"
                                                         object:self];
 }
+
+- (IBAction)SetBackgroundPhotoButtonHandle:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SetBackgroundPhotoButtonHandle"
+                                                        object:self];
+}
+
+
+
 
 @end

@@ -35,7 +35,7 @@
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
     CGContextSetAllowsAntialiasing(contextRef, true);
     
-    CGContextSetRGBStrokeColor(contextRef,0.03, 0.90, 0.50, .9);
+    CGContextSetRGBStrokeColor(contextRef,0.03, 0.90, 0.50, 1);
     CGContextSetLineWidth(contextRef, 0.8);
     
     CGContextBeginPath(contextRef);
@@ -43,7 +43,7 @@
     CGContextAddLineToPoint(contextRef, 290, 190);
     CGContextDrawPath(contextRef, kCGPathStroke);
     
-    CGContextSetRGBFillColor(contextRef, 0.02, 0.88, 0.48, .88);
+    CGContextSetRGBFillColor(contextRef, 0.02, 0.88, 0.48, .5);
     
     CGContextStrokeRect(contextRef, CGRectMake(50, 350, 100, 50));
     
@@ -138,5 +138,7 @@
     if(isItNil == nil) return false;
     return true;
 }
+
+
 
 @end

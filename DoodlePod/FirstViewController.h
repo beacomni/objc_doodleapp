@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
+#import <AVFoundation/AVFoundation.h>
 #import "DrawSubView.h"
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
 @end
