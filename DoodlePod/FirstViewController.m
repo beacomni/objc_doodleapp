@@ -74,6 +74,8 @@
 
 - (void)handleSaveSettings:(NSNotification *)notification {
     [_DrawSubViewOutlet saveTrailLengthSetting];
+    //TODO save image
+    //[_DrawSubViewOutlet savePhotoSetting];
 }
 
 - (void)handlePhotoPick:(NSNotification *)notification {

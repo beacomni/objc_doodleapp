@@ -17,6 +17,8 @@
 		7B77B6C71EFADC7800A206F6 /* DoodlePodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6C61EFADC7800A206F6 /* DoodlePodTests.m */; };
 		7B77B6D21EFADC7800A206F6 /* DoodlePodUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6D11EFADC7800A206F6 /* DoodlePodUITests.m */; };
 		7B77B6E11EFADC9E00A206F6 /* DrawSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6E01EFADC9E00A206F6 /* DrawSubView.m */; };
+		7B77B6E41EFC566800A206F6 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6E31EFC566800A206F6 /* DBManager.m */; };
+		7B77B6E71EFC63D800A206F6 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B77B6E61EFC63D800A206F6 /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,9 @@
 		7B77B6D31EFADC7800A206F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B77B6DF1EFADC9E00A206F6 /* DrawSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawSubView.h; sourceTree = "<group>"; };
 		7B77B6E01EFADC9E00A206F6 /* DrawSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawSubView.m; sourceTree = "<group>"; };
+		7B77B6E21EFC566800A206F6 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		7B77B6E31EFC566800A206F6 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		7B77B6E61EFC63D800A206F6 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B77B6E71EFC63D800A206F6 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +97,7 @@
 				7B77B6C51EFADC7800A206F6 /* DoodlePodTests */,
 				7B77B6D01EFADC7800A206F6 /* DoodlePodUITests */,
 				7B77B6A71EFADC7800A206F6 /* Products */,
+				7B77B6E51EFC63D800A206F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +122,8 @@
 				7B77B6E01EFADC9E00A206F6 /* DrawSubView.m */,
 				7B77B6B21EFADC7800A206F6 /* SecondViewController.h */,
 				7B77B6B31EFADC7800A206F6 /* SecondViewController.m */,
+				7B77B6E21EFC566800A206F6 /* DBManager.h */,
+				7B77B6E31EFC566800A206F6 /* DBManager.m */,
 				7B77B6B51EFADC7800A206F6 /* Main.storyboard */,
 				7B77B6B81EFADC7800A206F6 /* Assets.xcassets */,
 				7B77B6BA1EFADC7800A206F6 /* LaunchScreen.storyboard */,
@@ -148,6 +157,14 @@
 				7B77B6D31EFADC7800A206F6 /* Info.plist */,
 			);
 			path = DoodlePodUITests;
+			sourceTree = "<group>";
+		};
+		7B77B6E51EFC63D800A206F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B77B6E61EFC63D800A206F6 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +303,7 @@
 				7B77B6B41EFADC7800A206F6 /* SecondViewController.m in Sources */,
 				7B77B6AE1EFADC7800A206F6 /* AppDelegate.m in Sources */,
 				7B77B6E11EFADC9E00A206F6 /* DrawSubView.m in Sources */,
+				7B77B6E41EFC566800A206F6 /* DBManager.m in Sources */,
 				7B77B6B11EFADC7800A206F6 /* FirstViewController.m in Sources */,
 				7B77B6AB1EFADC7800A206F6 /* main.m in Sources */,
 			);

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "DBManager.h"
 
 @interface DrawSubView : UIView 
 
@@ -21,6 +21,7 @@
 - (void)updateTrailLengthWith:(long)val;
 - (void) selectPhoto;
 - (void) toggleBlink;
+- (void) savePhotoSetting;
 
 @property int pointWidth;
 @property int pointHeight;
@@ -30,6 +31,8 @@
 @property long trailLength;
 @property NSString *trailLengthKey;
 @property NSTimer *blinkTimer;
+
+@property DBManager *dbManager;
 
 @property bool isBlinkOn;
 

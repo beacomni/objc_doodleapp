@@ -33,6 +33,8 @@
     _pointWidth = 3;
     _pointHeight = 3;
     _isBlinkOn = false;
+    _dbManager = [DBManager getSharedInstance];
+    [_dbManager createDB];
 }
 
 - (void) toggleBlink{
@@ -167,6 +169,20 @@
         [forSerializing addObject: NSStringFromCGPoint(pt.CGPointValue)];
     }
     [forSerializing writeToFile:path atomically:YES];
+    
+    //save to db
+    
+    int newSaveSetId;
+    int maxSaveId = [_dbManager getMaxSaveSetId];
+    if(maxSaveId == -1){
+        newSaveSetId = 1;
+    }
+    newSaveSetId = maxSaveId + 1;
+    
+    for(int i = 0; i < _drawPointsArray.count; i++){
+        NSValue *point = _drawPointsArray[i];
+        [_dbManager saveData:newSaveSetId position:i xcoord:point.CGPointValue.x ycoord:point.CGPointValue.y];
+    }
 }
 
 - (bool)savedDataAvailable{
@@ -194,5 +210,18 @@
     return true;
 }
 
+/** TODO images saving
+- (void)savePhotoSetting{
+    
+}
+
+- (void)loadPhotoSetting{
+    
+}
+
+- (void)hasPhotoSetting{
+    
+}
+ **/
 
 @end
