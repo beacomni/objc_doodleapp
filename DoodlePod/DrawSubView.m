@@ -22,12 +22,13 @@
 
 - (void)initializeSubView{
     _drawPointsArray = [[NSMutableArray alloc] init];
+    _remoteArray = [[NSMutableArray alloc] init];
     _trailLength = 100;
     _trailLengthKey = @"trailLengthSetting";
     if([self hasTrailLengthSetting]){
         [self loadTrailLengthSetting];
     }
-
+    
     //_taskTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateDotLightCounter) userInfo:nil repeats:YES];
     //_taskTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(dotMove) userInfo:nil repeats:YES];
     _pointWidth = 3;
@@ -35,6 +36,22 @@
     _isBlinkOn = false;
     _dbManager = [DBManager getSharedInstance];
     [_dbManager createDB];
+    _tcpConnectionClient = [[TCPConnectionClientStuff alloc] init];
+    [_tcpConnectionClient openTCPConnection:@"10.126.120.60" WithPort:4000];
+    [_tcpConnectionClient set_completionHandler:^(NSString * msg){
+        [self gotRemoteMessage:msg];
+    }];
+    
+}
+
+- (void) gotRemoteMessage:(NSString *)msg{
+    NSArray *coords = [msg componentsSeparatedByString:@","];
+    if(coords.count >=2){
+        float x =  [coords[0] floatValue];
+        float y = [coords[1] floatValue];
+        [_remoteArray addObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]];
+        [self setNeedsDisplay];
+    }
 }
 
 - (void) toggleBlink{
@@ -48,7 +65,7 @@
 }
 
 - (void)setBlinkOn{
-        _blinkTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(toggleDotSize) userInfo:nil repeats:YES];
+    _blinkTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(toggleDotSize) userInfo:nil repeats:YES];
 }
 
 - (void)setBlinkOff{
@@ -87,6 +104,12 @@
             CGContextFillEllipseInRect(contextRef, CGRectMake(point.x - 2, point.y-2, _pointWidth, _pointHeight));
         }
     };
+    
+    for(int i = 0;  i < _remoteArray.count; i++){
+            CGPoint point = [[_remoteArray objectAtIndex:i] CGPointValue];
+            CGContextFillEllipseInRect(contextRef, CGRectMake(point.x - 2, point.y-2, _pointWidth, _pointHeight));
+
+    };
 }
 
 
@@ -101,6 +124,7 @@
     {
         [_drawPointsArray removeObjectAtIndex:0];
     }
+    [_tcpConnectionClient sendMessage:[NSString stringWithFormat:@"%.1f,%.1f\r\n",touch.x,touch.y]];
     [_drawPointsArray addObject:[NSValue valueWithCGPoint:touch]];
     [self setNeedsDisplay];
 }
@@ -144,12 +168,17 @@
     if(_drawPointsArray.count > 0){
         _drawPointsArray = [[NSMutableArray alloc] init];
     }
-    NSString *path = [self getSavePath];
-    NSMutableArray *undeserialized = [[NSMutableArray alloc] init];
-    undeserialized = [NSMutableArray arrayWithContentsOfFile:path];
-    for(int i = 0; i < undeserialized.count; i++){
-        [_drawPointsArray addObject:[NSValue valueWithCGPoint:CGPointFromString(undeserialized[i])]];
-    }
+    /*NSString *path = [self getSavePath];
+     NSMutableArray *undeserialized = [[NSMutableArray alloc] init];
+     undeserialized = [NSMutableArray arrayWithContentsOfFile:path];
+     for(int i = 0; i < undeserialized.count; i++){
+     [_drawPointsArray addObject:[NSValue valueWithCGPoint:CGPointFromString(undeserialized[i])]];
+     }*/
+    
+    int mostRecentlySaved = [_dbManager getMaxSaveSetId];
+    NSMutableArray *arr = [_dbManager findAllBySaveSetId:mostRecentlySaved];
+    _drawPointsArray = [_dbManager findAllBySaveSetId:mostRecentlySaved];
+    
     [self refresh];
 }
 
@@ -211,17 +240,17 @@
 }
 
 /** TODO images saving
-- (void)savePhotoSetting{
-    
-}
-
-- (void)loadPhotoSetting{
-    
-}
-
-- (void)hasPhotoSetting{
-    
-}
+ - (void)savePhotoSetting{
+ 
+ }
+ 
+ - (void)loadPhotoSetting{
+ 
+ }
+ 
+ - (void)hasPhotoSetting{
+ 
+ }
  **/
 
 @end

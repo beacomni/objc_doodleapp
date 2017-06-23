@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DBManager.h"
+#import "TCPConnectionClientStuff.h"
 
 @interface DrawSubView : UIView 
 
@@ -28,6 +29,7 @@
 @property int dotLightCounter;
 
 @property NSMutableArray *drawPointsArray;
+@property NSMutableArray *remoteArray;
 @property long trailLength;
 @property NSString *trailLengthKey;
 @property NSTimer *blinkTimer;
@@ -35,5 +37,5 @@
 @property DBManager *dbManager;
 
 @property bool isBlinkOn;
-
+@property TCPConnectionClientStuff *tcpConnectionClient;
 @end

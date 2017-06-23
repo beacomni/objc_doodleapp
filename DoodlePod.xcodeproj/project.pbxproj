@@ -19,6 +19,8 @@
 		7B77B6E11EFADC9E00A206F6 /* DrawSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6E01EFADC9E00A206F6 /* DrawSubView.m */; };
 		7B77B6E41EFC566800A206F6 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6E31EFC566800A206F6 /* DBManager.m */; };
 		7B77B6E71EFC63D800A206F6 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B77B6E61EFC63D800A206F6 /* libsqlite3.tbd */; };
+		7B77B6EA1EFD996100A206F6 /* TCPConnectionClientStuff.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6E91EFD996100A206F6 /* TCPConnectionClientStuff.m */; };
+		7B77B6ED1EFD9B3900A206F6 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B77B6EC1EFD9B3900A206F6 /* GCDAsyncSocket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,10 @@
 		7B77B6E21EFC566800A206F6 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		7B77B6E31EFC566800A206F6 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		7B77B6E61EFC63D800A206F6 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		7B77B6E81EFD996100A206F6 /* TCPConnectionClientStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCPConnectionClientStuff.h; sourceTree = "<group>"; };
+		7B77B6E91EFD996100A206F6 /* TCPConnectionClientStuff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCPConnectionClientStuff.m; sourceTree = "<group>"; };
+		7B77B6EB1EFD9B3900A206F6 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = "../../day 5/Day 9/EchoClient/EchoClient/GCDAsyncSocket.h"; sourceTree = "<group>"; };
+		7B77B6EC1EFD9B3900A206F6 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = "../../day 5/Day 9/EchoClient/EchoClient/GCDAsyncSocket.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,8 @@
 		7B77B6A81EFADC7800A206F6 /* DoodlePod */ = {
 			isa = PBXGroup;
 			children = (
+				7B77B6EB1EFD9B3900A206F6 /* GCDAsyncSocket.h */,
+				7B77B6EC1EFD9B3900A206F6 /* GCDAsyncSocket.m */,
 				7B77B6AC1EFADC7800A206F6 /* AppDelegate.h */,
 				7B77B6AD1EFADC7800A206F6 /* AppDelegate.m */,
 				7B77B6AF1EFADC7800A206F6 /* FirstViewController.h */,
@@ -124,6 +132,8 @@
 				7B77B6B31EFADC7800A206F6 /* SecondViewController.m */,
 				7B77B6E21EFC566800A206F6 /* DBManager.h */,
 				7B77B6E31EFC566800A206F6 /* DBManager.m */,
+				7B77B6E81EFD996100A206F6 /* TCPConnectionClientStuff.h */,
+				7B77B6E91EFD996100A206F6 /* TCPConnectionClientStuff.m */,
 				7B77B6B51EFADC7800A206F6 /* Main.storyboard */,
 				7B77B6B81EFADC7800A206F6 /* Assets.xcassets */,
 				7B77B6BA1EFADC7800A206F6 /* LaunchScreen.storyboard */,
@@ -300,11 +310,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B77B6ED1EFD9B3900A206F6 /* GCDAsyncSocket.m in Sources */,
 				7B77B6B41EFADC7800A206F6 /* SecondViewController.m in Sources */,
 				7B77B6AE1EFADC7800A206F6 /* AppDelegate.m in Sources */,
 				7B77B6E11EFADC9E00A206F6 /* DrawSubView.m in Sources */,
 				7B77B6E41EFC566800A206F6 /* DBManager.m in Sources */,
 				7B77B6B11EFADC7800A206F6 /* FirstViewController.m in Sources */,
+				7B77B6EA1EFD996100A206F6 /* TCPConnectionClientStuff.m in Sources */,
 				7B77B6AB1EFADC7800A206F6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
